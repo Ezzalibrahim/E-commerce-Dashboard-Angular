@@ -1,0 +1,50 @@
+<div class="container mx-auto mt-5">
+  <h2 class="text-2xl font-bold mb-3">Categories</h2>
+
+  <!-- Category Form -->
+  <form class="mb-5">
+    <div class="flex items-center">
+      <label for="categoryName" class="mr-2">Category Name:</label>
+      <input
+        type="text"
+        id="categoryName"
+        class="border p-2"
+        placeholder="Enter category name"
+      />
+      <button
+        type="submit"
+        class="ml-2 bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Add Category
+      </button>
+    </div>
+  </form>
+
+  <!-- Category Table -->
+  <table class="w-full border">
+    <thead>
+      <tr>
+        <th class="border p-2">Category ID</th>
+        <th class="border p-2">Category Name</th>
+        <th class="border p-2">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr
+        *ngFor="let category of categories; let even = even; let odd = odd"
+        [ngClass]="{ 'bg-gray-100': even, 'bg-white': odd }"
+      >
+        <td class="border p-2">{{ category.id }}</td>
+        <td class="border p-2">{{ category.categoryName }}</td>
+        <td class="border  px-4 py-3 text-center">
+          <!-- You can add action buttons or links here -->
+          <button 
+            class="px-2 py-1 text-xs  font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+            (click)="toggleActivation(category)">Active
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
